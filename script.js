@@ -315,8 +315,8 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
     const img = $('img', card);
     if (!img) return;
 
-    /* Use a higher-resolution version of the same Unsplash image */
-    zoomImg.src = img.src.replace(/w=\d+/, 'w=1200').replace(/q=\d+/, 'q=90');
+    /* Use the same local asset — local images are full-resolution */
+    zoomImg.src = img.src;
     zoomImg.alt = img.alt;
     zoomTitle.textContent = card.dataset.title || '';
     zoomDesc.textContent  = card.dataset.desc  || '';
