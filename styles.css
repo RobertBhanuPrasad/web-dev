@@ -43,7 +43,7 @@
   --space-2xl: 6rem;
 
   /* Layout */
-  --max-width: 1200px;
+  --max-width: 1240px;
   --nav-h:     77px;
 
   /* Border radius */
@@ -143,7 +143,7 @@ p  { max-width: 70ch; }
   width: 100%;
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 5.556vw, 3.75rem);
+  padding-inline: clamp(1.25rem, 8.065vw, 6.25rem);
 }
 
 /* ----------------------------------------------------------
@@ -281,7 +281,7 @@ p  { max-width: 70ch; }
   height: var(--nav-h);
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 5.556vw, 3.75rem);
+  padding-inline: clamp(1.25rem, 8.065vw, 6.25rem);
   gap: var(--space-md);
 }
 
@@ -390,7 +390,7 @@ p  { max-width: 70ch; }
   height: var(--nav-h);
   max-width: var(--max-width);
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 5.556vw, 3.75rem);
+  padding-inline: clamp(1.25rem, 8.065vw, 6.25rem);
   gap: var(--space-md);
 }
 
@@ -673,7 +673,7 @@ p  { max-width: 70ch; }
 }
 
 .trust-logo img {
-  height: 48px;
+  height: 150px;
   width: auto;
   object-fit: contain;
   opacity: 0.75;
@@ -846,13 +846,12 @@ p  { max-width: 70ch; }
 }
 
 .faq__title {
-  text-align: center;
+  text-align: left;
   margin-bottom: var(--space-xl);
 }
 
 .faq__list {
-  max-width: 860px;
-  margin: 0 auto var(--space-xl);
+  margin: 0 0 var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -919,8 +918,6 @@ p  { max-width: 70ch; }
 
 /* Email capture card below FAQ */
 .faq-email-card {
-  max-width: 860px;
-  margin: 0 auto;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-md) var(--space-lg);
@@ -1265,13 +1262,22 @@ p  { max-width: 70ch; }
   margin: 0 auto var(--space-xl);
 }
 
-/* Tab button strip */
+/* Outer card wrapping tabs + panel */
+.process-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Tab button strip — sits at the top of the card */
 .process-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: var(--space-lg);
-  background: transparent;
+  padding: 1.25rem 2rem;
+  background: var(--white);
+  margin-bottom: 0;
 }
 
 .process-tab {
@@ -1296,12 +1302,10 @@ p  { max-width: 70ch; }
   color: var(--purple);
 }
 
-/* Tab content panel */
+/* Tab content panel — no individual border, card handles it */
 .process-panel {
   background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-xl) 2rem;
   animation: panelFadeIn 0.35s ease both;
 }
 
@@ -1614,17 +1618,24 @@ p  { max-width: 70ch; }
    20. CTA Form Section (Purple background)
    ---------------------------------------------------------- */
 .cta-form {
-  background: var(--purple);
+  background: transparent;
+  padding: var(--space-2xl) 0;
+}
+
+/* Rounded dark box — constrained inside the page container */
+.cta-form__box {
+  background: #1B0A5E;
   background-image:
     radial-gradient(circle at 20% 50%, rgba(255,255,255,0.05) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 40%);
-  padding: var(--space-2xl) 0;
+  border-radius: 32px;
+  padding: 60px;
 }
 
 .cta-form__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-2xl);
+  grid-template-columns: 1.4fr 1fr;
+  gap: 120px;
   align-items: start;
 }
 
@@ -2012,7 +2023,12 @@ p  { max-width: 70ch; }
     max-width: none;
   }
 
-  /* CTA form: stack */
+  /* CTA form: stack + reduce box padding */
+  .cta-form__box {
+    padding: var(--space-lg) var(--space-md);
+    border-radius: 16px;
+  }
+
   .cta-form__grid {
     grid-template-columns: 1fr;
     gap: var(--space-xl);
