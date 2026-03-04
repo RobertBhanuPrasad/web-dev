@@ -924,8 +924,13 @@ p  { max-width: 70ch; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
-  flex-wrap: wrap;
+  gap: 1.5rem;
+  flex-wrap: nowrap;  /* always keep form on the right, wraps only on mobile */
+}
+
+.faq-email-card__text {
+  flex: 1;
+  min-width: 0;
 }
 
 .faq-email-card__text h3 {
@@ -943,7 +948,7 @@ p  { max-width: 70ch; }
   display: flex;
   gap: 0.75rem;
   flex-shrink: 0;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
 .faq-email-card__form input {
@@ -953,7 +958,7 @@ p  { max-width: 70ch; }
   font-family: var(--ff);
   font-size: 0.9rem;
   outline: none;
-  min-width: 220px;
+  width: 180px;
   transition: border-color 0.2s ease;
 }
 
@@ -1762,14 +1767,17 @@ p  { max-width: 70ch; }
   border-top: 1px solid var(--border);
 }
 
-/* Top row: logo + tagline */
+/* Top row: logo + tagline — enclosed in a bordered box */
 .footer__top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-lg);
-  padding: var(--space-lg) 0;
+  padding: var(--space-md) var(--space-lg);
   flex-wrap: wrap;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin: var(--space-lg) 0;
 }
 
 .footer__tagline {
@@ -1785,6 +1793,7 @@ p  { max-width: 70ch; }
 }
 
 .footer__divider {
+  display: none;  /* box border on .footer__top already separates sections */
   border: none;
   border-top: 1px solid var(--border);
 }
@@ -1853,10 +1862,10 @@ p  { max-width: 70ch; }
   background: rgba(91,33,182,0.05);
 }
 
-/* Footer bottom bar */
+/* Footer bottom bar — full page width, border stretches edge to edge */
 .footer__bar {
   border-top: 1px solid var(--border);
-  padding: 1.1rem 0;
+  padding: 1.1rem clamp(1.25rem, 8.065vw, 6.25rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1992,19 +2001,18 @@ p  { max-width: 70ch; }
     grid-template-columns: 1fr;
   }
 
-  /* FAQ email card: stack */
+  /* FAQ email card: stack on mobile */
   .faq-email-card {
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: flex-start;
   }
 
   .faq-email-card__form {
-    flex-direction: column;
     width: 100%;
   }
 
   .faq-email-card__form input {
-    min-width: unset;
     width: 100%;
   }
 
