@@ -673,7 +673,7 @@ p  { max-width: 70ch; }
 }
 
 .trust-logo img {
-  height: 150px;
+  height: 80px;
   width: auto;
   object-fit: contain;
   opacity: 0.75;
